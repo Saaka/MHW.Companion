@@ -1,4 +1,5 @@
-﻿using MHW.Companion.Config;
+﻿using AutoMapper;
+using MHW.Companion.Config;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MHW.Companion.API.Config
@@ -9,6 +10,17 @@ namespace MHW.Companion.API.Config
         {
             services.AddScoped<IAppConfiguration, AppConfiguration>();
             
+            return services;
+        }
+        
+        public static IServiceCollection RegisterAutoMapper(this IServiceCollection services)
+        {
+
+            services.AddAutoMapper(opt =>
+            {
+                opt.AddProfile<ViewModelToDataModelMappingProfile>();
+                //opt.ForAllMaps((map, exp) => exp.ForAllOtherMembers(mo => mo.Ignore()));
+            });
             return services;
         }
     }

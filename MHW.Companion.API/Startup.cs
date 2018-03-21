@@ -42,11 +42,7 @@ namespace MHW.Companion.API
             builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole<int>), builder.Services);
             builder.AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-            services.AddAutoMapper(opt =>
-            {
-                opt.AddProfile<ViewModelToDataModelMappingProfile>();
-                //opt.ForAllMaps((map, exp) => exp.ForAllOtherMembers(mo => mo.Ignore()));
-            });
+            services.RegisterAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
