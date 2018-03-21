@@ -11,7 +11,7 @@ namespace MHW.Companion.API.Auth
     public interface IJwtFactory
     {
         Task<string> GenerateEncodedToken(string userName, ClaimsIdentity identity);
-        ClaimsIdentity GenerateClaimsIdentity(string userName, string id);
+        ClaimsIdentity GenerateClaimsIdentity(string userName, int id);
     }
 
     public class JwtFactory : IJwtFactory
@@ -49,11 +49,11 @@ namespace MHW.Companion.API.Auth
             return encodedJwt;
         }
 
-        public ClaimsIdentity GenerateClaimsIdentity(string userName, string id)
+        public ClaimsIdentity GenerateClaimsIdentity(string userName, int id)
         {
             return new ClaimsIdentity(new GenericIdentity(userName, "Token"), new[]
             {
-                new Claim(Config.JwtConstants.Strings.JwtClaimIdentifiers.Id, id),
+                new Claim(Config.JwtConstants.Strings.JwtClaimIdentifiers.Id, id.ToString()),
                 new Claim(Config.JwtConstants.Strings.JwtClaimIdentifiers.Rol, Config.JwtConstants.Strings.JwtClaims.ApiAccess)
             });
         }
