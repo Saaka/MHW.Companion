@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MHW.Companion.API.Auth;
 using MHW.Companion.Config;
 using MHW.Companion.Data.Store;
 using MHW.Companion.Model.User;
@@ -14,12 +15,11 @@ namespace MHW.Companion.API.Config
 {
     public static class ServiceCollectionRegistration
     {
-        private static SecurityKey _signingKey;
-
         public static IServiceCollection RegisterWebApiDependencies(this IServiceCollection services)
         {
             services.AddScoped<IAppConfiguration, AppConfiguration>();
-            
+            services.AddSingleton<IJwtFactory, JwtFactory>();
+
             return services;
         }
         
