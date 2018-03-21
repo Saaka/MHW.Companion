@@ -5,11 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MHW.Companion.Data.Config;
 using MHW.Companion.API.Config;
-using AutoMapper;
-using MHW.Companion.Model.User;
-using MHW.Companion.Data.Store;
-using Microsoft.AspNetCore.Identity;
-using MHW.Companion.ViewModels.Mappings;
 
 namespace MHW.Companion.API
 {
@@ -32,17 +27,11 @@ namespace MHW.Companion.API
 
             services.AddMvc();
 
-            services.RegisterWebApiDependencies();
-            services.RegisterContext(Configuration);
-
-            var builder = services.AddIdentityCore<AppUser>(o =>
-            {
-                o.Password.RequireNonAlphanumeric = false;
-            });
-            builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole<int>), builder.Services);
-            builder.AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-
-            services.RegisterAutoMapper();
+            services
+                .RegisterWebApiDependencies()
+                .RegisterContext(Configuration)
+                .RegisterIdentity()
+                .RegisterAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
