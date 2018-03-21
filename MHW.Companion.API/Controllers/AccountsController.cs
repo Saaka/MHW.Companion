@@ -4,9 +4,6 @@ using MHW.Companion.Model.User;
 using MHW.Companion.ViewModels.Accounts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MHW.Companion.API.Controllers
@@ -26,8 +23,9 @@ namespace MHW.Companion.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(RegistrationViewModel model)
+        public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {
+            System.Diagnostics.Debug.WriteLine(model);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
