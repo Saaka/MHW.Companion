@@ -28,7 +28,7 @@ namespace MHW.Companion.API
             services.AddMvc();
 
             services.RegisterWebApiDependencies();
-            services.RegisterContext();
+            services.RegisterContext(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

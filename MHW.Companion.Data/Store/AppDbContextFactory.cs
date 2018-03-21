@@ -14,7 +14,7 @@ namespace MHW.Companion.Data.Store
             optionsBuilder.UseSqlServer(GetConnectionString(),
                 opt =>
                 {
-                    opt.MigrationsHistoryTable("MHWCompationMigrations");
+                    opt.MigrationsHistoryTable("MHWCompanionMigrations");
                 });
 
             return new AppDbContext(optionsBuilder.Options);
