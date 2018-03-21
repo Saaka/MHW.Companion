@@ -5,32 +5,32 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MHW.Companion.Data.Config;
 using MHW.Companion.API.Config;
+using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace MHW.Companion.API
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+        private SymmetricSecurityKey _signingKey;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _signingKey = SymetricKeyGenerator.CreateKey(Configuration);
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(sharedOptions =>
-            {
-                sharedOptions.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            });
-
+            services.AddAuth(Configuration, _signingKey);
             services.AddMvc();
-
             services
                 .RegisterWebApiDependencies()
                 .RegisterContext(Configuration)
                 .RegisterIdentity()
+                .RegisterJWT(Configuration, _signingKey)
                 .RegisterAutoMapper();
         }
 
@@ -46,7 +46,6 @@ namespace MHW.Companion.API
                 .UseAuthentication()
                 .UseMiddleware<ExceptionHandlingMiddleware>()
                 .UseMvc();
-
         }
     }
 }
