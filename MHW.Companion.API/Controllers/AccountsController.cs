@@ -25,18 +25,17 @@ namespace MHW.Companion.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]RegistrationViewModel model)
         {
-            System.Diagnostics.Debug.WriteLine(model);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var userIdentity = _mapper.Map<AppUser>(model);
-            var result = await _userManager.CreateAsync(userIdentity, model.Password);
+            var newUser = _mapper.Map<AppUser>(model);
+            var result = await _userManager.CreateAsync(newUser, model.Password);
 
             if (!result.Succeeded) return new BadRequestObjectResult(result.Errors);
             
-            return new OkObjectResult("Account created");
+            return new OkObjectResult(newUser.Id);
         }
     }
 }
