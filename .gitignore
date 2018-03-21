@@ -1,5 +1,6 @@
 #Custom
-dbsettings*.json
+dbsettings.*.json
+appsettings.*.json
 
 /Properties/launchSettings.json
 

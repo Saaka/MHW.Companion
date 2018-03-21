@@ -1,5 +1,4 @@
-﻿using MHW.Companion.Config;
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +23,7 @@ namespace MHW.Companion.Data.Store
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                .AddJsonFile("dbsettings.json");
+                .AddJsonFile("dbsettings.Development.json");
 
             var config = builder.Build();
             return config["data:connectionString"].ToString();
