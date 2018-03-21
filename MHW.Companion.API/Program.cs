@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace MHW.Companion.API
 {
@@ -20,6 +14,16 @@ namespace MHW.Companion.API
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .ConfigureAppConfiguration((hostCtx, config) =>
+                {
+                    config.AddJsonFile("dbsettings.json", optional: false, reloadOnChange: true);
+                    config.AddJsonFile($"dbsettings.{hostCtx.HostingEnvironment.EnvironmentName}.json", optional: true);
+                    config.AddEnvironmentVariables();
+                    if (args != null)
+                    {
+                        config.AddCommandLine(args);
+                    }
+                })
                 .Build();
     }
 }
