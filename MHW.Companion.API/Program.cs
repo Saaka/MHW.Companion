@@ -21,17 +21,12 @@ namespace MHW.Companion.API
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
                 .ConfigureAppConfiguration((hostCtx, config) =>
                 {
                     config.AddJsonFile("dbsettings.json", optional: false, reloadOnChange: true);
                     config.AddJsonFile($"dbsettings.{hostCtx.HostingEnvironment.EnvironmentName}.json", optional: true);
-                    config.AddEnvironmentVariables();
-                    if (args != null)
-                    {
-                        config.AddCommandLine(args);
-                    }
                 })
+                .UseStartup<Startup>()
                 .Build();
 
         private static void InitDb(IWebHost host)

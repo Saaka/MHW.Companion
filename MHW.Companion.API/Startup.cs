@@ -26,10 +26,11 @@ namespace MHW.Companion.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuth(Configuration, _signingKey);
             services.AddMvc()
                 .AddValidation();
+
             services
+                .AddAuth(Configuration, _signingKey)
                 .RegisterWebApiDependencies()
                 .RegisterContext(Configuration)
                 .RegisterIdentity()
