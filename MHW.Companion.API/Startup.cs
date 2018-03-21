@@ -7,6 +7,8 @@ using MHW.Companion.Data.Config;
 using MHW.Companion.API.Config;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using FluentValidation.AspNetCore;
+using MHW.Companion.ViewModels.Validations;
 
 namespace MHW.Companion.API
 {
@@ -25,7 +27,8 @@ namespace MHW.Companion.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAuth(Configuration, _signingKey);
-            services.AddMvc();
+            services.AddMvc()
+                .AddValidation();
             services
                 .RegisterWebApiDependencies()
                 .RegisterContext(Configuration)

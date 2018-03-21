@@ -73,7 +73,7 @@ namespace MHW.Companion.API.Config
                 ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
 
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = _signingKey,
+                IssuerSigningKey = key,
 
                 RequireExpirationTime = false,
                 ValidateLifetime = true,
