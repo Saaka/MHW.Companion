@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
@@ -26,6 +28,7 @@
     <ProjectReference Include="..\MHW.Companion.Config\MHW.Companion.Config.csproj" />
     <ProjectReference Include="..\MHW.Companion.Data\MHW.Companion.Data.csproj" />
     <ProjectReference Include="..\MHW.Companion.Model\MHW.Companion.Model.csproj" />
+    <ProjectReference Include="..\MHW.Companion.ViewModels\MHW.Companion.ViewModels.csproj" />
     <ProjectReference Include="..\MHW.Companion\MHW.Companion.csproj" />
   </ItemGroup>
 

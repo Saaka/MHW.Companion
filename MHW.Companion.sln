@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHW.Companion.Model", "MHW.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHW.Companion.Data", "MHW.Companion.Data\MHW.Companion.Data.csproj", "{D9EE4150-1414-46AB-8E5B-FA61FDD78AD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHW.Companion.Config", "MHW.Companion.Config\MHW.Companion.Config.csproj", "{A55B8C0F-E9BF-4C6A-880F-DBC0B3500569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MHW.Companion.Config", "MHW.Companion.Config\MHW.Companion.Config.csproj", "{A55B8C0F-E9BF-4C6A-880F-DBC0B3500569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHW.Companion.ViewModels", "MHW.Companion.ViewModels\MHW.Companion.ViewModels.csproj", "{DA23331C-4FE6-429A-8E12-4697ACCF1B39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{A55B8C0F-E9BF-4C6A-880F-DBC0B3500569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A55B8C0F-E9BF-4C6A-880F-DBC0B3500569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A55B8C0F-E9BF-4C6A-880F-DBC0B3500569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA23331C-4FE6-429A-8E12-4697ACCF1B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA23331C-4FE6-429A-8E12-4697ACCF1B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA23331C-4FE6-429A-8E12-4697ACCF1B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA23331C-4FE6-429A-8E12-4697ACCF1B39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
